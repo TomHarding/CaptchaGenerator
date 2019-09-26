@@ -39,41 +39,55 @@ function createForms() {
     let parent = document.createElement('div');
     parent.style.display = 'block';
     parent.style.width = '200px';
-    parent.style.height = '200px';
+    parent.style.maxHeight = '175px';
     parent.style.font = '12px Helvetica';
     parent.style.border = '2px solid #d3d3d3';
+    parent.style.borderRadius = '3px';
     parent.style.padding = '10px';
 
     let canvas = document.createElement('canvas');
-    canvas.style.display = 'block';
     canvas.width = 200;
     canvas.height = 50;
-    canvas.style.paddingBottom = '10px';
+    canvas.style.display = 'block';
+
+    let text = document.createElement('p');
+    text.innerHTML = 'Type the text above: ';
+
+    let inputParent = document.createElement('div');
+    inputParent.style.display = 'flex';
 
     let input = document.createElement('input');
     input.type = 'text';
-    input.style.width = '138px';
-    input.style.padding = '5px 10px';
     input.id = 'inputString';
+    input.style.width = '145px';
+    input.style.padding = '5px 10px';
 
     let refreshIcon = document.createElement('img');
     refreshIcon.src = 'https://icon-library.net/images/refresh-icon-png/refresh-icon-png-17.jpg';
     refreshIcon.alt = 'Refresh captcha';
     refreshIcon.style.width = '28px';
     refreshIcon.style.height = '28px';
+    refreshIcon.style.paddingLeft = '5px';
     refreshIcon.addEventListener('click', refresh, false);
+
+    inputParent.appendChild(input);
+    inputParent.appendChild(refreshIcon);
 
     let submit = document.createElement('input');
     submit.type = 'submit';
     submit.value = 'Submit';
     submit.style.width = '75px';
+    submit.style.height = '25px';
     submit.style.marginTop = '10px';
     submit.style.backgroundColor = '#287bff';
+    submit.style.color = '#ffffff';
+    submit.style.border = 'none';
+    submit.style.borderRadius = '3px';
     submit.addEventListener('click', validate, false);
 
     parent.appendChild(canvas);
-    parent.appendChild(input);
-    parent.appendChild(refreshIcon);
+    parent.appendChild(text);
+    parent.appendChild(inputParent);
     parent.appendChild(submit);
 
     return parent;

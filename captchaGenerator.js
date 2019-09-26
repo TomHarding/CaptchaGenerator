@@ -1,5 +1,8 @@
 'use strict';
 
+let string = undefined;
+let canvas = undefined;
+
 init();
 
 function init() {
@@ -7,7 +10,6 @@ function init() {
 
     if (captcha !== undefined) {
         let form = createForms(captcha);
-        let canvas = undefined;
 
         for (let i = 0; i < form.childNodes.length; i++) {
             if (form.childNodes[i].tagName.toUpperCase() === 'CANVAS')
@@ -16,7 +18,7 @@ function init() {
 
         if (canvas !== undefined) {
             drawCanvas(canvas);
-            const string = createRandomString();
+            string = createRandomString();
             drawStringOnCanvas(canvas, string);
             captcha.appendChild(form);
         }
@@ -95,6 +97,7 @@ function createForms() {
 
 function drawCanvas(canvas) {
     let ctx = canvas.getContext('2d');
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect( 0, 0, ctx.canvas.width, ctx.canvas.height);
     const red = randomInt(125, 175);
     const green = randomInt(125, 175);
@@ -141,11 +144,18 @@ function drawStringOnCanvas(canvas, string) {
 }
 
 function refresh() {
-
+    drawCanvas(canvas);
+    string = createRandomString();
+    drawStringOnCanvas(canvas, string);
+    document.getElementById('inputString').value = '';
 }
 
 function validate() {
-    const input = document.getElementById('inputString');
+    if (document.getElementById('inputString').value === string) {
+        console.log('Correct input');
+    } else {
+        console.log('Incorrect input');
+    }
 }
 
 function randomInt(min, max) {

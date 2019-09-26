@@ -4,7 +4,7 @@
     <list default="true" id="e9345277-98df-4af0-98dc-cd40fbd7006e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Example/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/captchaGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/captchaGenerator.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +66,7 @@
       <workItem from="1568152982603" duration="473000" />
       <workItem from="1569409626039" duration="16191000" />
       <workItem from="1569494179975" duration="3270000" />
-      <workItem from="1569497620592" duration="1644000" />
+      <workItem from="1569497620592" duration="2860000" />
     </task>
     <servers />
   </component>

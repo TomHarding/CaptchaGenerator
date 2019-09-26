@@ -11,5 +11,5 @@ just drop the following tag into your HTML.
 
 If successful you should see the captcha window rendered - see example below.
 
-![alt text](./Example/captcha.png "Captcha example")
+![alt text](./Example/screenshot.png "Captcha example")
 

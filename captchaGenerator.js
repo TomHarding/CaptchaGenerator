@@ -152,9 +152,11 @@ function refresh() {
 
 function validate() {
     if (document.getElementById('inputString').value === string) {
-        console.log('Correct input');
+        const date = new Date();
+        date.setTime(date.getTime() + (60*1000));
+        document.cookie = `captcha=true;expires=${date.toUTCString()};path=/`;
     } else {
-        console.log('Incorrect input');
+        console.log('Incorrect string');
     }
 }
 

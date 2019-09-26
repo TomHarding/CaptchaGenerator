@@ -55,17 +55,22 @@ function createForms() {
     let text = document.createElement('p');
     text.innerHTML = 'Type the text above: ';
 
+    let notification = document.createElement('P');
+    notification.id = 'notification';
+    notification.style.display = 'none';
+
     let inputParent = document.createElement('div');
     inputParent.style.display = 'flex';
 
     let input = document.createElement('input');
     input.type = 'text';
-    input.id = 'inputString';
+    input.id = 'input';
     input.style.width = '145px';
     input.style.padding = '5px 10px';
 
     let refreshIcon = document.createElement('img');
     refreshIcon.src = 'https://icon-library.net/images/refresh-icon-png/refresh-icon-png-17.jpg';
+    refreshIcon.id = 'refresh';
     refreshIcon.alt = 'Refresh captcha';
     refreshIcon.style.width = '28px';
     refreshIcon.style.height = '28px';
@@ -77,6 +82,7 @@ function createForms() {
 
     let submit = document.createElement('input');
     submit.type = 'submit';
+    submit.id = 'submit';
     submit.value = 'Submit';
     submit.style.width = '75px';
     submit.style.height = '25px';
@@ -89,6 +95,7 @@ function createForms() {
 
     parent.appendChild(canvas);
     parent.appendChild(text);
+    parent.appendChild(notification);
     parent.appendChild(inputParent);
     parent.appendChild(submit);
 
@@ -147,16 +154,30 @@ function refresh() {
     drawCanvas(canvas);
     string = createRandomString();
     drawStringOnCanvas(canvas, string);
-    document.getElementById('inputString').value = '';
+    document.getElementById('input').value = '';
+    document.getElementById('notification').style.display = 'none';
 }
 
 function validate() {
-    if (document.getElementById('inputString').value === string) {
+    if (document.getElementById('input').value === string) {
         const date = new Date();
         date.setTime(date.getTime() + (60*1000));
         document.cookie = `captcha=true;expires=${date.toUTCString()};path=/`;
+
+        let notification = document.getElementById('notification');
+        notification.innerHTML = 'Success';
+        notification.style.color = '#00ff7f';
+        notification.style.display = 'block';
+
+        document.getElementById('input').disabled = 'true';
+        document.getElementById('refresh').removeEventListener('click', refresh, false);
+        document.getElementById('submit').disabled = 'true';
+        document.getElementById('submit').removeEventListener('click', validate, false);
     } else {
-        console.log('Incorrect string');
+        let notification = document.getElementById('notification');
+        notification.innerHTML = 'Incorrect text';
+        notification.style.color = '#ff0000';
+        notification.style.display = 'block';
     }
 }
 
